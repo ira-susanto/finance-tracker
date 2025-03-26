@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the repo for the Finance Tracker App build with Ruby on Rails 6 from the 
+Complete Ruby on Rails Developer course
 
-Things you may want to cover:
+## Technology Configuration
 
-* Ruby version
+This framework is written in Ruby on Rails. The following configuration has been proven to work effectively.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Ruby - v2.6.10
+- Rails - v6.0.6.1
