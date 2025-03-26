@@ -60,3 +60,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'concurrent-ruby', '= 1.3.4'
 gem 'net-http', '~> 0.6.0'
+
+gem "devise", "~> 4.9"
