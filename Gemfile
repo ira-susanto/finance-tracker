@@ -66,3 +66,5 @@ gem "devise", "~> 4.9"
 gem "devise-bootstrap-views", "~> 1.1"
 
 gem "alphavantage", "~> 1.2"
+
+gem "font-awesome-rails", "~> 4.7"
