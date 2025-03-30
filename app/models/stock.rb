@@ -20,7 +20,6 @@ class Stock < ApplicationRecord
 
       new(ticker: ticker_symbol, name: company.name, last_price: daily_open_close.close)
     rescue => exception
-      puts "exception: #{exception.message}"
       return nil
     end
   end
