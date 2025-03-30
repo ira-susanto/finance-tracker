@@ -20,12 +20,9 @@ end
 # Override the method in the module
 module PolygonioPatch
   def daily_open_close(symbol, date)
-    puts "daily_open_close"
     symbol = Types::String[symbol]
     date = Types::JSON::Date[date]
 
-    puts "Symbol: #{symbol}, Date: #{date}"
-    puts client.inspect
     res = client.request.get("/v1/open-close/#{symbol}/#{date}")
 
     # Symbolize keys and fix naming inconsistencies
@@ -34,7 +31,7 @@ module PolygonioPatch
     # Fix keys that are different in API response
     formatted_data[:after_hours] = formatted_data.delete(:afterHours) if formatted_data.key?(:afterHours)
     formatted_data[:pre_market] = formatted_data.delete(:preMarket) if formatted_data.key?(:preMarket)
-    puts formatted_data
+    
     PatchedDailyOpenCloseResponse[formatted_data]
   end
 end
