@@ -25,6 +25,10 @@ class Stock < ApplicationRecord
     end
   end
 
+  def self.check_db(ticker_symbol)
+    where(ticker: ticker_symbol).first
+  end
+
   private 
 
   def self.yesterday_last_business_date(date = Date.today)
