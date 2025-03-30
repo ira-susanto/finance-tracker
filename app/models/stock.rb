@@ -15,12 +15,26 @@ class Stock < ApplicationRecord
       # See the monkey patch in initializer/polygonio_patch.rb for the fix.
       # 
       # Note: Cannot use `last_quote` due to restrictions in the free subscription plan.
-      yesterday = (Date.today - 1).strftime('%Y-%m-%d')
+      yesterday = yesterday_last_business_date(Date.today).strftime('%Y-%m-%d')
       daily_open_close = client.stocks.daily_open_close(ticker_symbol, yesterday)
 
       new(ticker: ticker_symbol, name: company.name, last_price: daily_open_close.close)
     rescue => exception
+      puts "exception: #{exception.message}"
       return nil
+    end
+  end
+
+  private 
+
+  def self.yesterday_last_business_date(date = Date.today)
+    case date.wday
+    when 1 # Monday
+      date - 3
+    when 0 # Sunday
+      date - 2
+    else
+      date - 1
     end
   end
 end
