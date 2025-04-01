@@ -9,10 +9,10 @@ class UsersController < ApplicationController
 
   def search
     if params[:friend].present?
-       @friend = params[:friend]
-      # @stock = Stock.new_lookup(params[:stock])
+      @friends = User.search(params[:friend])
+      @friends = current_user.except_current_user(@friends)
 
-      if @friend
+      if @friends
         respond_to do |format|
           format.js { render partial: 'users/friend_result' }
         end
