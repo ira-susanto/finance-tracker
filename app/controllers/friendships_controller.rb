@@ -1,9 +1,11 @@
-class UserStocksController < ApplicationController
+class FriendshipsController < ApplicationController
+  def create
+  end
+
   def destroy
-    friend = User.find(params[:id])
-    friendship = Friendship.where(user_id: current_user.id, friend_id: friend.id).first
+    friendship = current_user.friendships.where(friend_id: params[:id]).first
     friendship.destroy
-    flash[:notice] = "You have successfully stopped following #{friend.full_name}"
+    flash[:notice] = 'Stopped following'
     redirect_to my_friends_path
   end
 end
